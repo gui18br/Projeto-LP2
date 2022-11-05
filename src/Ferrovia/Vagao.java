@@ -12,7 +12,6 @@ public class Vagao{
 	}
 	
 	public Vagao(char vagao, int locomotiva, double pesoVagao, String commoditie) {
-		super();
 		this.vagao = vagao;
 		this.locomotiva = locomotiva;
 		this.pesoVagao = pesoVagao;
