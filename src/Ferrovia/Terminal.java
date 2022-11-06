@@ -11,13 +11,15 @@ public class Terminal {
 		Locomotiva l2 = new Locomotiva('2');
 		Stack<Object> viaFerreaMin = new Stack<>();
 		Stack<Object> viaFerreaGra = new Stack<>();
+		viaFerreaMin.add(l1);
+		viaFerreaGra.add(l2);
 
 		for (int i =0; i<=13; i++) {
 			
 			System.out.println("Informe o endereco do Vagao: ");
 			char ende = sc.next().charAt(0);
 			
-			System.out.println("Informe para qual locomotiva o vagao irá: ");
+			System.out.println("Informe para qual locomotiva o vagao irá: [1] Minérios [2]Grãos ");
 			int loc = sc.nextInt();
 			
 			System.out.println("Informe o peso do vagao: ");
@@ -27,10 +29,15 @@ public class Terminal {
 			String cm = sc.next();
 			
 			Vagao vagao = new Vagao(ende, loc, peso, cm);
-					
+			
+			if(loc == 1) {
+				viaFerreaMin.add(vagao);
+			}else if (loc == 2){
+				viaFerreaGra.add(vagao);
+			}
+		
 		}
-		
-		
-	}
 
+	}	
+	
 }
