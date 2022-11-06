@@ -1,7 +1,6 @@
 package Ferrovia;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Terminal {
 
@@ -9,10 +8,12 @@ public class Terminal {
 		Scanner sc = new Scanner(System.in);
 		Locomotiva l1 = new Locomotiva('1');
 		Locomotiva l2 = new Locomotiva('2');
-		Stack<Object> viaFerreaMin = new Stack<>();
-		Stack<Object> viaFerreaGra = new Stack<>();
-		viaFerreaMin.add(l1);
-		viaFerreaGra.add(l2);
+		ViaFerreaMin vfm = new ViaFerreaMin();
+		ViaFerreaGra vfg = new ViaFerreaGra();
+		
+		vfm.embarque(l1);
+		vfg.embarque(l2);
+		
 
 		for (int i =0; i<=13; i++) {
 			
@@ -31,9 +32,9 @@ public class Terminal {
 			Vagao vagao = new Vagao(ende, loc, peso, cm);
 			
 			if(loc == 1) {
-				viaFerreaMin.add(vagao);
+				vfm.embarque(vagao);
 			}else if (loc == 2){
-				viaFerreaGra.add(vagao);
+				vfg.embarque(vagao);
 			}
 		
 		}
