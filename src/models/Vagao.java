@@ -1,3 +1,5 @@
+package models;
+
 public class Vagao{
 
     protected char indexVagao;
@@ -48,11 +50,11 @@ public class Vagao{
     @Override
     public String toString() {
         return "{" +
-            " indexVagao='" + getIndexVagao() + "'" +
-            ", tipoCarga='" + getTipoCarga() + "'" +
-            ", nomeCarga='" + getNomeCarga() + "'" +
-            ", qtd='" + getQtd() + "'" +
-            "}";
+                " indexVagao='" + getIndexVagao() + "'" +
+                ", tipoCarga='" + getTipoCarga() + "'" +
+                ", nomeCarga='" + getNomeCarga() + "'" +
+                ", qtd='" + getQtd() + "'" +
+                "}";
     }
 
 }

@@ -1,6 +1,10 @@
+package main;
+
 import java.util.Stack;
 import java.io.IOException;
 import java.util.Scanner;
+import models.*;
+import java.util.*;
 
 public class Main {
     private static Scanner entrada = new Scanner(System.in);
@@ -167,7 +171,7 @@ public class Main {
             }
             if (locomotivaR1.getStatus() == "Parado no terminal") {
                 if (locomotivaR1.isEmpilhavel() == true) {
-                    locomotivaR1.vagoesPilha.push(v);
+                    locomotivaR1.getVagoesPilha().push(v);
                 } else {
                     System.out.println(
                             "Essa locomotiva não pode receber um vagão no momento pois sua posição é: "
@@ -188,7 +192,7 @@ public class Main {
             }
             if (locomotivaR2.getStatus() == "Parado no terminal") {
                 if (locomotivaR2.isEmpilhavel() == true) {
-                    locomotivaR2.vagoesPilha.push(v);
+                    locomotivaR2.getVagoesPilha().push(v);
                 } else {
                     System.out.println(
                             "Essa locomotiva não pode receber um vagão no momento pois sua posição é: "
@@ -212,7 +216,7 @@ public class Main {
                             .println("O vagão de identificador '" + locomotivaR1.getVagoesPilha().peek().getIndexVagao()
                                     + "' foi removido");
                     locomotivaR1.getVagoesPilha().pop();
-                    locomotivaR1.setQtdDesembarques(+1);
+                    locomotivaR1.setQtdDesembarques(locomotivaR1.getQtdDesembarques()+1);
 
                 } else {
                     System.out.println("A locomotiva não tem vagões com produtos");
@@ -232,7 +236,7 @@ public class Main {
                             .println("O vagão de identificador '" + locomotivaR2.getVagoesPilha().peek().getIndexVagao()
                                     + "' foi removido");
                     locomotivaR2.getVagoesPilha().pop();
-
+                    locomotivaR2.setQtdDesembarques(locomotivaR2.getQtdDesembarques()+1);
                 } else {
                     System.out.println("A locomotiva não tem vagões com produtos");
                     System.exit(0);
@@ -257,8 +261,8 @@ public class Main {
 
                 Vagao v = new Vagao(indexVagao, tipoCarga, nomeCarga, qtd);
 
-                locomotivaR2.vagoesPilha.push(v);
-                locomotivaR1.vagoesPilha.pop();
+                locomotivaR2.getVagoesPilha().push(v);
+                locomotivaR1.getVagoesPilha().pop();
 
                 System.out.println("Foi transferido um vagão da locomotiva R1 para a locomotiva R2");
             }
@@ -271,8 +275,8 @@ public class Main {
 
                 Vagao v = new Vagao(indexVagao, tipoCarga, nomeCarga, qtd);
 
-                locomotivaR1.vagoesPilha.push(v);
-                locomotivaR2.vagoesPilha.pop();
+                locomotivaR1.getVagoesPilha().push(v);
+                locomotivaR2.getVagoesPilha().pop();
 
                 System.out.println("Foi transferido um vagão da locomotiva R2 para a locomotiva R1");
             }
