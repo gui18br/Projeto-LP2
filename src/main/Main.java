@@ -168,7 +168,6 @@ public class Main {
         Vagao v = new Vagao(indexVagaoUpperCase, tipoCarga, nomeCarga, qtd);
 
         if (indexTerminal == 1) {
-            System.out.println(locomotivaR1.getVagoesPilha().size());
             for (int i = 0; i < locomotivaR1.getVagoesPilha().size(); i++) {
                 if (locomotivaR1.getVagoesPilha().get(i).getIndexVagao() == indexVagaoUpperCase) {
                     System.out.println("Este identificador já foi utilizado");
