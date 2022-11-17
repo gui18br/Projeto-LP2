@@ -12,8 +12,8 @@ public class Main {
     private static Locomotiva locomotivaR2;
 
     public static void main(String[] args) throws Exception {
-        locomotivaR1 = new Locomotiva(1, "Parado no terminal", new Stack<Vagao>(), 0);
-        locomotivaR2 = new Locomotiva(2, "Parado no terminal", new Stack<Vagao>(), 0);
+        locomotivaR1 = new Locomotiva(1, "Parado no terminal", new Stack<Vagao>(), 0, new ArrayList<String>());
+        locomotivaR2 = new Locomotiva(2, "Parado no terminal", new Stack<Vagao>(), 0, new ArrayList<String>());
 
         menu();
     }
@@ -68,10 +68,11 @@ public class Main {
                     break;
                 case 4:
                     System.out.println(
-                            "Foram feitos " + locomotivaR1.getQtdDesembarques() + " desembarques nesse terminal");
+                            "Neste terminal foram feitos  desembarque(s) de "+ locomotivaR1.listarDesembarques() +
+                                    " totalizando " + locomotivaR1.getQtdDesembarques() + ", desembarque(s)");
                     break;
                 case 5:
-                    System.out.println(locomotivaR1.getVagoesPilha());;
+                    System.out.println(locomotivaR1.getVagoesPilha());
                     break;
             }
         }
@@ -89,10 +90,11 @@ public class Main {
                     break;
                 case 4:
                     System.out.println(
-                            "Foram feitos " + locomotivaR2.getQtdDesembarques() + " desembarques nesse terminal");
+                            "Neste terminal foram feitos  desembarque(s) de "+ locomotivaR2.listarDesembarques() +
+                                    ", totalizando " + locomotivaR2.getQtdDesembarques() + " desembarque(s)");
                     break;
                 case 5:
-                    System.out.println(locomotivaR2.getVagoesPilha());;
+                    System.out.println(locomotivaR2.getVagoesPilha());
                     break;
             }
         }
@@ -215,6 +217,7 @@ public class Main {
                     System.out
                             .println("O vagão de identificador '" + locomotivaR1.getVagoesPilha().peek().getIndexVagao()
                                     + "' foi removido");
+                    locomotivaR1.addDesembarques(locomotivaR1.getVagoesPilha().peek().getNomeCarga());
                     locomotivaR1.getVagoesPilha().pop();
                     locomotivaR1.setQtdDesembarques(locomotivaR1.getQtdDesembarques()+1);
 
@@ -235,6 +238,7 @@ public class Main {
                     System.out
                             .println("O vagão de identificador '" + locomotivaR2.getVagoesPilha().peek().getIndexVagao()
                                     + "' foi removido");
+                    locomotivaR2.addDesembarques(locomotivaR2.getVagoesPilha().peek().getNomeCarga());
                     locomotivaR2.getVagoesPilha().pop();
                     locomotivaR2.setQtdDesembarques(locomotivaR2.getQtdDesembarques()+1);
                 } else {

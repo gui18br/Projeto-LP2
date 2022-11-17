@@ -1,5 +1,6 @@
 package models;
 
+import java.util.List;
 import java.util.Stack;
 
 public class Locomotiva {
@@ -7,13 +8,15 @@ public class Locomotiva {
     protected int via;
     protected String status;
     protected Stack<Vagao> vagoesPilha;
+    protected List<String> listarDesembarque;
     protected int qtdDesembarques;
 
-    public Locomotiva(int via, String status, Stack<Vagao> vagoesPilha, int qtdDesembarques) {
+    public Locomotiva(int via, String status, Stack<Vagao> vagoesPilha, int qtdDesembarques, List<String> listarDesembarque) {
         this.via = via;
         this.status = status;
         this.vagoesPilha = vagoesPilha;
         this.qtdDesembarques = qtdDesembarques;
+        this.listarDesembarque = listarDesembarque;
     }
 
     public boolean isEmpilhavel() {
@@ -54,6 +57,14 @@ public class Locomotiva {
 
     public void setQtdDesembarques(int qtdDesembarques) {
         this.qtdDesembarques = qtdDesembarques;
+    }
+
+    public void addDesembarques(String v){
+        this.listarDesembarque.add(v);
+    }
+
+    public List<String> listarDesembarques(){
+        return this.listarDesembarque;
     }
 
     @Override
