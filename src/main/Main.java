@@ -157,6 +157,7 @@ public class Main {
     public static void addVagao(int indexTerminal) {
         System.out.println("Identificador do vagão (Digite uma letra de a-z)");
         char indexVagao = entrada.next().charAt(0);
+        char indexVagaoUpperCase = Character.toUpperCase(indexVagao);
         System.out.println("Tipo de carga (digite 1 para Minério ou 2 para grão)");
         int tipoCarga = entrada.nextInt();
         System.out.println("Digite o nome da carga (cobre, ferro, soja, etc)");
@@ -164,9 +165,16 @@ public class Main {
         System.out.println("Digite o peso da carga em kilogramas");
         double qtd = entrada.nextDouble();
 
-        Vagao v = new Vagao(indexVagao, tipoCarga, nomeCarga, qtd);
+        Vagao v = new Vagao(indexVagaoUpperCase, tipoCarga, nomeCarga, qtd);
 
         if (indexTerminal == 1) {
+            System.out.println(locomotivaR1.getVagoesPilha().size());
+            for (int i = 0; i < locomotivaR1.getVagoesPilha().size(); i++) {
+                if (locomotivaR1.getVagoesPilha().get(i).getIndexVagao() == indexVagaoUpperCase) {
+                    System.out.println("Este identificador já foi utilizado");
+                    System.exit(0);
+                }
+            }
             if (!(tipoCarga == 1)) {
                 System.out.println("O terminal R1 só aceita cargas do tipo minério");
                 System.exit(0);
@@ -188,6 +196,12 @@ public class Main {
         }
 
         if (indexTerminal == 2) {
+            for (int i = 0; i < locomotivaR2.getVagoesPilha().size(); i++) {
+                if (locomotivaR2.getVagoesPilha().get(i).getIndexVagao() == indexVagaoUpperCase) {
+                    System.out.println("Este identificador já foi utilizado");
+                    System.exit(0);
+                }
+            }
             if (!(tipoCarga == 2)) {
                 System.out.println("O terminal R2 só aceita cargas do tipo grãos");
                 System.exit(0);
