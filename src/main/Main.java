@@ -124,19 +124,23 @@ public class Main {
                 break;
             }
             case 2: {
-                System.out.println("Desembarcar vagão do terminal R1 ou R2? (Digite 1 ou 2)");
-                int terminalInput = entrada.nextInt();
+                System.out.println("Informe o identificador do vagão que você deseja remover (Letra de a-z)");
+                char indexVagao = entrada.next().charAt(0);
+                char indexVagaoUpperCase = Character.toUpperCase(indexVagao);
 
-                switch (terminalInput) {
-                    case 1:
-                        removerVagao(terminalInput);
-                        break;
-                    case 2:
-                        removerVagao(terminalInput);
-                        break;
+                if (!(locomotivaR1.getVagoesPilha().isEmpty()) &&
+                        locomotivaR1.getVagoesPilha().peek().getIndexVagao() == indexVagaoUpperCase) {
+                    removerVagao(locomotivaR1.getVia());
+                } else if(!(locomotivaR2.getVagoesPilha().isEmpty() )&&
+                        locomotivaR2.getVagoesPilha().peek().getIndexVagao() == indexVagaoUpperCase){
+                    removerVagao(locomotivaR2.getVia());
+                } else {
+                    System.out.println("O identificador não se encontra na ponta de nenhum dos terminais");
+                    menu();
                 }
                 break;
             }
+
             case 3: {
                 System.out.println("Transferir vagão do terminal R1 ou R2? (Digite 1 ou 2)");
                 int terminalInput = entrada.nextInt();
@@ -168,7 +172,6 @@ public class Main {
         Vagao v = new Vagao(indexVagaoUpperCase, tipoCarga, nomeCarga, qtd);
 
         if (indexTerminal == 1) {
-            System.out.println(locomotivaR1.getVagoesPilha().size());
             for (int i = 0; i < locomotivaR1.getVagoesPilha().size(); i++) {
                 if (locomotivaR1.getVagoesPilha().get(i).getIndexVagao() == indexVagaoUpperCase) {
                     System.out.println("Este identificador já foi utilizado");
@@ -229,8 +232,8 @@ public class Main {
             if (locomotivaR1.getStatus() == "Parado no terminal") {
                 if (locomotivaR1.getVagoesPilha().isEmpty() == false) {
                     System.out
-                            .println("O vagão de identificador '" + locomotivaR1.getVagoesPilha().peek().getIndexVagao()
-                                    + "' foi removido");
+                            .println("O vagão de identificador '" + locomotivaR1.getVagoesPilha().peek().getIndexVagao() +
+                                    "' foi removido da ponta do terminal "+ indexTerminal);
                     locomotivaR1.addDesembarques(locomotivaR1.getVagoesPilha().peek().getNomeCarga());
                     locomotivaR1.getVagoesPilha().pop();
                     locomotivaR1.setQtdDesembarques(locomotivaR1.getQtdDesembarques()+1);
@@ -250,8 +253,8 @@ public class Main {
             if (locomotivaR2.getStatus() == "Parado no terminal") {
                 if (locomotivaR2.getVagoesPilha().isEmpty() == false) {
                     System.out
-                            .println("O vagão de identificador '" + locomotivaR2.getVagoesPilha().peek().getIndexVagao()
-                                    + "' foi removido");
+                            .println("O vagão de identificador '" + locomotivaR2.getVagoesPilha().peek().getIndexVagao() +
+                                    "' foi removido do terminal "+indexTerminal);
                     locomotivaR2.addDesembarques(locomotivaR2.getVagoesPilha().peek().getNomeCarga());
                     locomotivaR2.getVagoesPilha().pop();
                     locomotivaR2.setQtdDesembarques(locomotivaR2.getQtdDesembarques()+1);
