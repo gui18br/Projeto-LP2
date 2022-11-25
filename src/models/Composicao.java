@@ -3,7 +3,7 @@ package models;
 import java.util.List;
 import java.util.Stack;
 
-public class Locomotiva {
+public class Composicao {
 
     protected int via;
     protected String status;
@@ -11,7 +11,7 @@ public class Locomotiva {
     protected List<String> listarDesembarque;
     protected int qtdDesembarques;
 
-    public Locomotiva(int via, String status, Stack<Vagao> vagoesPilha, int qtdDesembarques, List<String> listarDesembarque) {
+    public Composicao(int via, String status, Stack<Vagao> vagoesPilha, int qtdDesembarques, List<String> listarDesembarque) {
         this.via = via;
         this.status = status;
         this.vagoesPilha = vagoesPilha;

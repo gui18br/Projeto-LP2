@@ -7,9 +7,9 @@ public class Vagao{
     protected String nomeCarga;
     protected double qtd;
 
-    public Vagao(char indexVagao, int tipoCarga, String nomeCarga, double qtd) {
+    public Vagao(char indexVagao, String nomeCarga, double qtd) {
         this.indexVagao = indexVagao;
-        this.tipoCarga = tipoCarga;
+        this.tipoCarga = 0;
         this.nomeCarga = nomeCarga;
         this.qtd = qtd;
     }
