@@ -1,9 +1,11 @@
 package main;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
-import models.*;
-import java.util.*;
+
+import models.Composicao;
+import models.Vagao;
 
 public class Main {
     private static Scanner entrada = new Scanner(System.in);
@@ -11,15 +13,15 @@ public class Main {
     private static Composicao composicaoR2;
 
     public static void main(String[] args) throws Exception {
-        composicaoR1 = new Composicao(1, "Parado no terminal", new Stack<Vagao>(), 0, new ArrayList<String>());
-        composicaoR2 = new Composicao(2, "Parado no terminal", new Stack<Vagao>(), 0, new ArrayList<String>());
+        composicaoR1 = new Composicao(1, "Parado no terminal", new LinkedList<Vagao>(), 0, new ArrayList<String>());
+        composicaoR2 = new Composicao(2, "Parado no terminal", new LinkedList<Vagao>(), 0, new ArrayList<String>());
 
         menu();
     }
 
     public static void menu() {
         System.out.println("----------------------------------------");
-        System.out.println("          VAGÕES FERROVIÁRIOS           ");
+        System.out.println("          VAGÕES FERROVI� RIOS           ");
         System.out.println("----------------------------------------\n");
         System.out.println("Status R1: " + composicaoR1.getStatus());
         System.out.println("Status R2: " + composicaoR2.getStatus()+"\n");

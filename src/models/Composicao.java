@@ -1,24 +1,25 @@
 package models;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 public class Composicao {
 
     protected int via;
     protected String status;
-    protected Stack<Vagao> vagoesPilha;
+    protected Deque<Vagao> vagoesPilha = new LinkedList<>();
     protected List<String> listarDesembarque;
     protected int qtdDesembarques;
 
-    public Composicao(int via, String status, Stack<Vagao> vagoesPilha, int qtdDesembarques, List<String> listarDesembarque) {
+    public Composicao(int via, String status, Deque<Vagao> vagoesPilha, int qtdDesembarques, List<String> listarDesembarque) {
         this.via = via;
         this.status = status;
         this.vagoesPilha = vagoesPilha;
         this.qtdDesembarques = qtdDesembarques;
         this.listarDesembarque = listarDesembarque;
     }
-
+    
     public boolean isEmpilhavel() {
         if (status == "Parado no terminal") {
             return true;
@@ -43,11 +44,11 @@ public class Composicao {
         this.status = status;
     }
 
-    public Stack<Vagao> getVagoesPilha() {
-        return this.vagoesPilha;
+    public LinkedList<Vagao> getVagoesPilha() {
+        return (LinkedList<Vagao>) this.vagoesPilha;
     }
 
-    public void setVagoes(Stack<Vagao> vagoes) {
+    public void setVagoes(LinkedList<Vagao> vagoes) {
         this.vagoesPilha = vagoes;
     }
 
